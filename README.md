@@ -2,6 +2,8 @@
 Naive Bayes based on credit card dataset  
 
 Dataset source: https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients#  
+Language: python3  
+External libraries: numpy and sklearn  
 
 I processed data by myself (removal of ID and names)  
 
