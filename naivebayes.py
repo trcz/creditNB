@@ -2,6 +2,7 @@
 #EXAMPLE APPLICATION OF NAIVE BAYES FOR FEATURES WITH MIXED DISTRIBUTIONS
 
 import numpy as np
+import pandas as pd
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.naive_bayes import BernoulliNB
@@ -15,8 +16,8 @@ warnings.filterwarnings("ignore") #Scaling values can raise warning about int->f
 
 #Loading data from .csv file, delimiter is semicolon due to language settings in my Windows
 def loadCsv(filename):
-    with open(filename, "rt"):
-        preset = np.genfromtxt(open(filename, "rt"), delimiter=';', dtype=None)
+    with open(filename, "rb") as myFile:
+        preset = pd.read_csv(myFile, sep=";", header=None)
     return preset
 
 
@@ -33,8 +34,8 @@ def splitByFeatures(set, gauNo, beNo, mnNo, clNo):
 #Loading file
 name = "credit_dataset2.csv"
 dataset = loadCsv(name)
+dataset = dataset.values
 print('Loaded data file {0} with {1} rows'.format(name, np.size(dataset, 0)))
-
 
 gauList = [0,4,11,12,13,14,15,16,17,18,19,20,21,22] #columns with gauss distribution
 beList = [1] #columns with bernoulli distribution
